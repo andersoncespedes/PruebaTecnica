@@ -1,0 +1,15 @@
+C:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\DataAccess\bin\Debug\net7.0\DataAccess.deps.json
+C:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\DataAccess\bin\Debug\net7.0\DataAccess.dll
+C:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\DataAccess\bin\Debug\net7.0\DataAccess.pdb
+C:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\DataAccess\bin\Debug\net7.0\Business.dll
+C:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\DataAccess\bin\Debug\net7.0\Business.pdb
+C:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\DataAccess\obj\Debug\net7.0\DataAccess.csproj.AssemblyReference.cache
+C:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\DataAccess\obj\Debug\net7.0\DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\DataAccess\obj\Debug\net7.0\DataAccess.AssemblyInfoInputs.cache
+C:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\DataAccess\obj\Debug\net7.0\DataAccess.AssemblyInfo.cs
+C:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\DataAccess\obj\Debug\net7.0\DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\DataAccess\obj\Debug\net7.0\DataAccess.csproj.CopyComplete
+C:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\DataAccess\obj\Debug\net7.0\DataAccess.dll
+C:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\DataAccess\obj\Debug\net7.0\refint\DataAccess.dll
+C:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\DataAccess\obj\Debug\net7.0\DataAccess.pdb
+C:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\DataAccess\obj\Debug\net7.0\ref\DataAccess.dll
