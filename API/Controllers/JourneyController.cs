@@ -13,7 +13,8 @@ public class JourneyController : BaseApiController
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAPIGetter _api;
     private readonly IMapper _mapper;
-    public JourneyController(IUnitOfWork unitOfWork, IAPIGetter api, IMapper mapper){
+    public JourneyController(IUnitOfWork unitOfWork, IAPIGetter api, IMapper mapper)
+    {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
         _api = api;
@@ -21,16 +22,37 @@ public class JourneyController : BaseApiController
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<JourneyDto>> Get([FromBody]JourneyBodyDto entity){
-        Journey journey = _unitOfWork.Journies.Find(e => e.Origin == entity.Origin && e.Destination == entity.Destination).FirstOrDefault();
-        if(journey != null){
-            return _mapper.Map<JourneyDto>(journey);
-        }else{
-            JourneyDto journeydto = await _api.GetJourney(entity);
-            journey = _mapper.Map<Journey>(journeydto);
-            _unitOfWork.Journies.Create(journey);
-            await _unitOfWork.SaveChangesAsync();
-            return journeydto;
+    public async Task<ActionResult<JourneyDto>> Get([FromBody] JourneyBodyDto entity)
+    {
+        try
+        {
+            entity.Origin = entity.Origin.ToUpper();
+            entity.Destination = entity.Destination.ToUpper();
+            Journey journey = _unitOfWork.Journies.Find(e => e.Origin == entity.Origin && e.Destination == entity.Destination).FirstOrDefault();
+            if (journey != null)
+            {
+                return _mapper.Map<JourneyDto>(journey);
+            }
+            else
+            {
+                JourneyDto journeydto = await _api.GetJourney(entity);
+                journey = _mapper.Map<Journey>(journeydto);
+                _unitOfWork.Journies.Create(journey);
+                await _unitOfWork.SaveChangesAsync();
+                return journeydto;
+            }
+        }
+        catch (InvalidOperationException)
+        {
+            return BadRequest();
+        }
+        catch (ArgumentNullException)
+        {
+            return NotFound();
+        }
+        catch (Exception err)
+        {
+            return Ok(err);
         }
     }
 }

@@ -16,6 +16,6 @@ public class JourneyRepository : GenericRepository<Journey>, IJourney
     }
     public override IEnumerable<Journey> Find(Expression<Func<Journey, bool>> expression)
     {
-        return _context.Journies.Where(expression).Include(e => e.Flights).ThenInclude(e => e.Transport);
+        return _context.Journies.Where(expression).Include(e => e.Flights);
     }
 }

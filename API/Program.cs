@@ -2,6 +2,7 @@ using DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using API.Extensions;
 using System.Reflection;
+using AspNetCoreRateLimit;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -16,6 +17,7 @@ builder.Services.AddDbContext<APIContext>(options => {
     string ConecctionString = builder.Configuration.GetConnectionString("SqlServerConn");
     options.UseSqlServer(ConecctionString);
 });
+builder.Services.ConfigureRatelimiting();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -26,6 +28,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseIpRateLimiting();
 
 app.UseAuthorization();
 
