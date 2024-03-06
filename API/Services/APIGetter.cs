@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using API.Dtos;
+using API.Dtos.Body;
 using API.Dtos.Entry;
 using AutoMapper;
 using Business.Entity;
@@ -29,5 +30,38 @@ public class APIGetter : IAPIGetter
         List<FlightsApiDto> flights = JsonSerializer.Deserialize<List<FlightsApiDto>>(body, options);
         List<FlightDto> datos = _mapper.Map<List<FlightDto>>(flights);
         return datos;
+    }
+
+    public async Task<JourneyDto> GetJourney(JourneyBodyDto entity)
+    {
+        IEnumerable<FlightDto> flights = await GetFlights();
+        string OriginalDestination = entity.Destination;
+        string RouteDestination = null;
+        List<FlightDto> data = flights.Where(e => e.Destination == entity.Destination && e.Origin == entity.Origin).ToList();
+        JourneyDto journey = new ();
+        journey.Origin = entity.Origin;
+        journey.Destination = entity.Destination;
+        if(data.Any()){
+            journey.Price = data.First().Price;
+            journey.Flights = data;
+            return journey;
+        }else{
+            List<FlightDto> flights1 = new();
+            int ident = 0;
+            while(RouteDestination != entity.Destination){
+                FlightDto finded ;
+                if(ident == 0){
+                    finded = flights.Where(e => e.Origin == entity.Origin).First();
+                }else{
+                    finded = flights.Where(e => e.Origin == RouteDestination).First();
+                }
+                RouteDestination = finded.Destination;
+                journey.Price += finded.Price;
+                flights1.Add(finded);
+                ident++;
+            }
+            journey.Flights = flights1;
+            return journey;
+        }   
     }
 }

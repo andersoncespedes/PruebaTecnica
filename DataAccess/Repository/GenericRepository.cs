@@ -1,5 +1,6 @@
 
 
+using System.Linq.Expressions;
 using Business.Entity;
 using Business.Interface;
 using DataAccess.Data;
@@ -15,6 +16,11 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     public virtual void Create(T entity)
     {
         _context.Set<T>().Add(entity);
+    }
+
+    public virtual IEnumerable<T> Find(Expression<Func<T, bool>> expression)
+    {
+        return _context.Set<T>().Where(expression);
     }
 
     public virtual async Task<IEnumerable<T>> GetAll()
