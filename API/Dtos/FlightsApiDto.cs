@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace API.Dtos;
-public class FlightsDto
+public class FlightsApiDto
 {
     public string DepartureStation {get; set;}
     public string ArrivalStation {get; set;}
