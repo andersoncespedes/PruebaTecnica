@@ -26,7 +26,11 @@ public class JourneyController : BaseApiController
         if(journey != null){
             return _mapper.Map<JourneyDto>(journey);
         }else{
-            return await _api.GetJourney(entity);
+            JourneyDto journeydto = await _api.GetJourney(entity);
+            journey = _mapper.Map<Journey>(journeydto);
+            _unitOfWork.Journies.Create(journey);
+            await _unitOfWork.SaveChangesAsync();
+            return journeydto;
         }
     }
 }

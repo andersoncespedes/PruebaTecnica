@@ -1,14 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
+
 using System.Text.Json;
-using System.Threading.Tasks;
 using API.Dtos;
 using API.Dtos.Body;
 using API.Dtos.Entry;
 using AutoMapper;
-using Business.Entity;
-using Business.Interface;
 
 namespace API.Services;
 public class APIGetter : IAPIGetter
@@ -53,7 +48,7 @@ public class APIGetter : IAPIGetter
                 if(ident == 0){
                     finded = flights.Where(e => e.Origin == entity.Origin).First();
                 }else{
-                    finded = flights.Where(e => e.Origin == RouteDestination).First();
+                    finded = flights.Where(e => (e.Origin == RouteDestination && e.Destination == entity.Destination) || e.Origin == RouteDestination).First();
                 }
                 RouteDestination = finded.Destination;
                 journey.Price += finded.Price;
