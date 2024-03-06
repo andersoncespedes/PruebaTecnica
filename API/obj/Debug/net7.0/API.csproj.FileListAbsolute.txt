@@ -78,3 +78,5 @@ C:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\API\obj\Debu
 C:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\API\obj\Debug\net7.0\API.pdb
 C:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\API\obj\Debug\net7.0\API.genruntimeconfig.cache
 C:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\API\obj\Debug\net7.0\ref\API.dll
+C:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\API\bin\Debug\net7.0\AutoMapper.dll
+C:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\API\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

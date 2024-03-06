@@ -1,6 +1,7 @@
 using DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using API.Extensions;
+using System.Reflection;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
