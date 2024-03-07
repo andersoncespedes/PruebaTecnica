@@ -25,11 +25,13 @@ public class JourneyConfiguration : IEntityTypeConfiguration<Journey>
 
             jp => jp.HasOne(e => e.Flight)
             .WithMany(e => e.JourneyFlights)
-            .HasForeignKey(e => e.IdFlightFK),
+            .HasForeignKey(e => e.IdFlightFK)
+            .OnDelete(DeleteBehavior.Cascade),
 
             jp => jp.HasOne(e => e.Journey)
             .WithMany(e => e.JourneyFlights)
-            .HasForeignKey(e => e.IdJourneyFK),
+            .HasForeignKey(e => e.IdJourneyFK)
+            .OnDelete(DeleteBehavior.Cascade),
             entity =>
             {
                 entity.HasKey(e => new { e.IdJourneyFK, e.IdFlightFK });

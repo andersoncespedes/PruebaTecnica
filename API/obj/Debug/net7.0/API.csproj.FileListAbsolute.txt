@@ -81,3 +81,6 @@ C:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\API\obj\Debu
 C:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\API\bin\Debug\net7.0\AutoMapper.dll
 C:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\API\bin\Debug\net7.0\AspNetCoreRateLimit.dll
 C:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\API\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\API\bin\Debug\net7.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\API\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\API\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll

@@ -30,7 +30,6 @@ public class APIGetter : IAPIGetter
 
     public async Task<JourneyDto> GetJourney(JourneyBodyDto entity)
     {
-
         IEnumerable<FlightDto> flights = await GetFlights();
         string OriginalDestination = entity.Destination;
         string RouteDestination = null;
@@ -59,7 +58,7 @@ public class APIGetter : IAPIGetter
                 {
                     finded = flights
                     .Where(e => e.Origin == RouteDestination && e.Destination == entity.Destination)
-                    .First();
+                    .FirstOrDefault();
                     if (finded == null)
                     {
                         finded = flights

@@ -1,5 +1,3 @@
-
-
 using API.Services;
 using AspNetCoreRateLimit;
 using Business.Interface;
@@ -12,6 +10,12 @@ public static class AppServiceExtension
     {
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IAPIGetter, APIGetter>();
+    }
+    public static void ConfigureJson(this IServiceCollection services){
+        services.AddControllersWithViews()
+        .AddNewtonsoftJson(options =>
+        options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+    );
     }
     public static void ConfigureRatelimiting(this IServiceCollection services)
     {
