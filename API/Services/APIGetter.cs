@@ -4,15 +4,24 @@ using API.Dtos;
 using API.Dtos.Body;
 using API.Dtos.Entry;
 using AutoMapper;
-
+using Microsoft.Extensions.Caching.Memory;
 namespace API.Services;
 public class APIGetter : IAPIGetter
 {
     private readonly IMapper _mapper;
+    private readonly IMemoryCache _cache;
     protected const string API_URL = "https://bitecingcom.ipage.com/testapi/avanzado.js";
-    public APIGetter(IMapper mapper)
+    public APIGetter(IMapper mapper, IMemoryCache memoryCache)
     {
         _mapper = mapper;
+        _cache = memoryCache;
+    }
+    private async Task<IEnumerable<FlightDto>>  GetOrSetCache(){
+        if(!_cache.TryGetValue("api", out List<FlightDto> flights)){
+            _cache.Set("api",await GetFlights(), TimeSpan.FromMinutes(10));
+            return (IEnumerable<FlightDto>)_cache.Get("api");
+        }
+        return flights;
     }
     public async Task<IEnumerable<FlightDto>> GetFlights()
     {
@@ -30,7 +39,7 @@ public class APIGetter : IAPIGetter
 
     public async Task<JourneyDto> GetJourney(JourneyBodyDto entity)
     {
-        IEnumerable<FlightDto> flights = await GetFlights();
+        IEnumerable<FlightDto> flights = await GetOrSetCache();
         string OriginalDestination = entity.Destination;
         string RouteDestination = null;
         List<FlightDto> data = flights.Where(e => e.Destination == entity.Destination && e.Origin == entity.Origin).ToList();
@@ -70,6 +79,10 @@ public class APIGetter : IAPIGetter
                 journey.Price += finded.Price;
                 flights1.Add(finded);
                 ident++;
+                flights = flights.Where(e => e.Origin + e.Destination != finded.Origin + finded.Destination);
+                if(RouteDestination != entity.Destination && !flights.Any(e => e.Origin == RouteDestination)){
+                    throw new Exception("Este vuelo cayo en un punto muerto");
+                }
             }
             journey.Flights = flights1;
             return journey;

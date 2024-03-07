@@ -2,6 +2,7 @@ using API.Services;
 using AspNetCoreRateLimit;
 using Business.Interface;
 using DataAccess.UnitOfWork;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace API.Extensions;
 public static class AppServiceExtension
@@ -10,6 +11,7 @@ public static class AppServiceExtension
     {
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IAPIGetter, APIGetter>();
+        services.AddSingleton<IMemoryCache, MemoryCache>();
     }
     public static void ConfigureJson(this IServiceCollection services){
         services.AddControllersWithViews()
