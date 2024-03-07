@@ -28,7 +28,9 @@ public class JourneyController : BaseApiController
         {
             entity.Origin = entity.Origin.ToUpper();
             entity.Destination = entity.Destination.ToUpper();
-            Journey journey = _unitOfWork.Journies.Find(e => e.Origin == entity.Origin && e.Destination == entity.Destination).FirstOrDefault();
+            Journey journey = _unitOfWork.Journies
+                .Find(e => e.Origin == entity.Origin && e.Destination == entity.Destination)
+                .FirstOrDefault();
             if (journey != null)
             {
                 return _mapper.Map<JourneyDto>(journey);
@@ -42,13 +44,13 @@ public class JourneyController : BaseApiController
                 return journeydto;
             }
         }
-        catch (InvalidOperationException)
+        catch (InvalidOperationException err)
         {
-            return BadRequest();
+            return BadRequest(err);
         }
         catch (ArgumentNullException)
         {
-            return NotFound();
+            return NotFound("No se encontro la ubicacion");
         }
         catch (Exception err)
         {
