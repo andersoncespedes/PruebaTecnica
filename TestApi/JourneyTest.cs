@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using API.Controllers;
 using API.Dtos.Body;
 using API.Dtos.Entry;
@@ -78,5 +79,28 @@ public class JourneyTest
         var result = await _controller.Get(journey);
         //assert
         Assert.True(result.Value?.Flights.Count < 4);
+    }
+    [Fact]
+    public async void LessThan500ms()
+    {
+        JourneyBodyDto journey = new();
+        journey.Destination = "med";
+        journey.Origin = "med";
+
+        var totalTime = 0L;
+        var iterations = 10; // Número de iteraciones para calcular el promedio
+
+        for (int i = 0; i < iterations; i++)
+        {
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+            var result = await _controller.Get(journey);
+            stopwatch.Stop();
+            totalTime += stopwatch.ElapsedMilliseconds;
+        }
+
+        var averageTime = totalTime / iterations;
+
+        Assert.True(averageTime < 500);
     }
 }
