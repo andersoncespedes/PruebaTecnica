@@ -10,7 +10,7 @@ public class FlightController : BaseApiController
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IEnumerable<FlightDto>> Get(IAPIGetter api){
-        return await api.GetFlights();
+        return await api.GetOrSetCacheApi();
     }
 
 }

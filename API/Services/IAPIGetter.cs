@@ -6,6 +6,6 @@ using API.Dtos.Entry;
 namespace API.Services;
 public interface IAPIGetter
 {
-    Task<IEnumerable<FlightDto>> GetFlights();
+    Task<IEnumerable<FlightDto>>  GetOrSetCacheApi();
     Task<JourneyDto> GetJourney(JourneyBodyDto entity);
 }

@@ -16,14 +16,16 @@ public class APIGetter : IAPIGetter
         _mapper = mapper;
         _cache = memoryCache;
     }
-    private async Task<IEnumerable<FlightDto>>  GetOrSetCache(){
-        if(!_cache.TryGetValue("api", out List<FlightDto> flights)){
-            _cache.Set("api",await GetFlights(), TimeSpan.FromMinutes(10));
+    public async Task<IEnumerable<FlightDto>> GetOrSetCacheApi()
+    {
+        if (!_cache.TryGetValue("api", out List<FlightDto> flights))
+        {
+            _cache.Set("api", await GetFlights(), TimeSpan.FromMinutes(10));
             return (IEnumerable<FlightDto>)_cache.Get("api");
         }
         return flights;
     }
-    public async Task<IEnumerable<FlightDto>> GetFlights()
+    private async Task<IEnumerable<FlightDto>> GetFlights()
     {
         HttpClient client = new();
         var options = new JsonSerializerOptions
@@ -39,7 +41,11 @@ public class APIGetter : IAPIGetter
 
     public async Task<JourneyDto> GetJourney(JourneyBodyDto entity)
     {
-        IEnumerable<FlightDto> flights = await GetOrSetCache();
+        IEnumerable<FlightDto> flights = await GetOrSetCacheApi();
+        if (!flights.Any(e => e.Destination == entity.Destination || e.Origin == entity.Origin))
+        {
+            throw new ArgumentNullException("No se encontro la ubicacion");
+        }
         string OriginalDestination = entity.Destination;
         string RouteDestination = null;
         List<FlightDto> data = flights.Where(e => e.Destination == entity.Destination && e.Origin == entity.Origin).ToList();
@@ -54,38 +60,45 @@ public class APIGetter : IAPIGetter
         }
         else
         {
-            List<FlightDto> flights1 = new();
-            int ident = 0;
-            while (RouteDestination != entity.Destination)
-            {
-                FlightDto finded;
-                if (ident == 0)
-                {
-                    finded = flights.Where(e => e.Origin == entity.Origin).First();
-                }
-                else
-                {
-                    finded = flights
-                    .Where(e => e.Origin == RouteDestination && e.Destination == entity.Destination)
-                    .FirstOrDefault();
-                    if (finded == null)
-                    {
-                        finded = flights
-                        .Where(e => e.Origin == RouteDestination)
-                        .First();
-                    }
-                }
-                RouteDestination = finded.Destination;
-                journey.Price += finded.Price;
-                flights1.Add(finded);
-                ident++;
-                flights = flights.Where(e => e.Origin + e.Destination != finded.Origin + finded.Destination);
-                if(RouteDestination != entity.Destination && !flights.Any(e => e.Origin == RouteDestination)){
-                    throw new Exception("Este vuelo cayo en un punto muerto");
-                }
-            }
+            List<FlightDto> flights1 = GetMostAppropiateRoute(entity, journey, RouteDestination, flights);
+
             journey.Flights = flights1;
             return journey;
         }
+    }
+    private List<FlightDto> GetMostAppropiateRoute(JourneyBodyDto entity, JourneyDto journey, string RouteDestination, IEnumerable<FlightDto> flights)
+    {
+        List<FlightDto> flights1 = new();
+        int ident = 0;
+        while (RouteDestination != entity.Destination)
+        {
+            FlightDto finded;
+            if (ident == 0)
+            {
+                finded = flights.Where(e => e.Origin == entity.Origin).First();
+            }
+            else
+            {
+                finded = flights
+                .Where(e => e.Origin == RouteDestination && e.Destination == entity.Destination)
+                .FirstOrDefault();
+                if (finded == null)
+                {
+                    finded = flights
+                    .Where(e => e.Origin == RouteDestination)
+                    .First();
+                }
+            }
+            RouteDestination = finded.Destination;
+            journey.Price += finded.Price;
+            flights1.Add(finded);
+            ident++;
+            flights = flights.Where(e => e.Origin + e.Destination != finded.Origin + finded.Destination);
+            if (RouteDestination != entity.Destination && !flights.Any(e => e.Origin == RouteDestination))
+            {
+                throw new Exception("No Se puede Realizar dicho viaje");
+            }
+        }
+        return flights1;
     }
 }

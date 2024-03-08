@@ -46,15 +46,15 @@ public class JourneyController : BaseApiController
         }
         catch (InvalidOperationException err)
         {
-            return BadRequest(err);
+            return BadRequest(err.Message);
         }
         catch (ArgumentNullException)
         {
             return NotFound("No se encontro la ubicacion");
         }
-        catch (Exception err)
+        catch (Exception)
         {
-            return Ok(err);
+            return Ok("No Se pudo realizar la operacion");
         }
     }
 }

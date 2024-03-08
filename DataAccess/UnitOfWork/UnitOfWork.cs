@@ -7,7 +7,7 @@ using DataAccess.Repository;
 namespace DataAccess.UnitOfWork;
 public class UnitOfWork : IUnitOfWork, IDisposable
 {
-    private APIContext _context;
+    private readonly APIContext _context;
     public UnitOfWork(APIContext context){
         _context = context;
     }
