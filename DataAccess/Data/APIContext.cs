@@ -12,6 +12,11 @@ public class APIContext : DbContext
     public APIContext(DbContextOptions<APIContext> options) :base(options){
 
     }
+
+    public APIContext()
+    {
+    }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
