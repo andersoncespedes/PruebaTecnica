@@ -2,34 +2,16 @@ using System.Diagnostics;
 using API.Controllers;
 using API.Dtos.Body;
 using API.Dtos.Entry;
-using API.Services;
-using AutoMapper;
-using DataAccess.Data;
-using DataAccess.UnitOfWork;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Caching.Memory;
 
 namespace TestApi;
 
-public class JourneyTest
+public class JourneyTest : BaseTest
 {
     private readonly JourneyController _controller;
-    private readonly APIGetter _service;
-    private readonly UnitOfWork _unitOfWork;
-    private readonly Mapper _mapper;
-    private readonly APIContext _context;
-    private readonly MemoryCache _cache;
+
     public JourneyTest()
     {
-        var options = new DbContextOptionsBuilder<APIContext>()
-            .UseSqlServer("Server=Anderson-pc\\ANDERSON;Database=ColombiaTravel;User Id=Anderson\\sa;Password=123456;Trust Server Certificate=True;Trusted_Connection=True;")
-            .Options;
-        _cache = new MemoryCache(new MemoryCacheOptions());
-        _context = new APIContext(options);
-        _mapper = new Mapper(MappingConfig.ConfigurationMapper());
-        _service = new APIGetter(_mapper, _cache);
-        _unitOfWork = new UnitOfWork(_context);
         _controller = new JourneyController(_unitOfWork, _service, _mapper);
 
     }
@@ -81,14 +63,14 @@ public class JourneyTest
         Assert.True(result.Value?.Flights.Count < 4);
     }
     [Fact]
-    public async void LessThan500ms()
+    public async void LessThan500msResponse()
     {
         JourneyBodyDto journey = new();
         journey.Destination = "med";
         journey.Origin = "med";
 
         var totalTime = 0L;
-        var iterations = 10; // Número de iteraciones para calcular el promedio
+        var iterations = 10;
 
         for (int i = 0; i < iterations; i++)
         {
