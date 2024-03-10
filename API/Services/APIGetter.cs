@@ -8,11 +8,13 @@ using Microsoft.Extensions.Caching.Memory;
 namespace API.Services;
 public class APIGetter : IAPIGetter
 {
+    // Inicializacion de variables usadas en la clase
     private readonly IMapper _mapper;
     private readonly IMemoryCache _cache;
     protected const string API_URL = "https://bitecingcom.ipage.com/testapi/avanzado.js";
     public APIGetter(IMapper mapper, IMemoryCache memoryCache)
     {
+        // Asignacion de valor por medio de servicios previamente registrados
         _mapper = mapper;
         _cache = memoryCache;
     }

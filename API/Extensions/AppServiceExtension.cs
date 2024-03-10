@@ -18,6 +18,7 @@ public static class AppServiceExtension
         services.AddSingleton<IMemoryCache, MemoryCache>();
     }
     public static void ConfigureJson(this IServiceCollection services){
+        // Configuracion para evitar excepciones de bucles infinitos en el json de respuesta
         services.AddControllersWithViews()
         .AddNewtonsoftJson(options =>
         options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
@@ -25,6 +26,7 @@ public static class AppServiceExtension
     }
     public static void ConfigureRatelimiting(this IServiceCollection services)
     {
+        // Configuracion del ratelimiting
         services.AddMemoryCache();
         services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
         services.AddInMemoryRateLimiting();

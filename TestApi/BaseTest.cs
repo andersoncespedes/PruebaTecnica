@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace TestApi;
+// Base Para las pruebas
 public class BaseTest
 {
     protected readonly APIGetter _service;
@@ -19,6 +20,7 @@ public class BaseTest
     protected readonly MemoryCache _cache;
     public BaseTest()
     {
+        // Instancias y configuracione usadas para las pruebas
         var options = new DbContextOptionsBuilder<APIContext>()
          .UseSqlServer("Server=Anderson-pc\\ANDERSON;Database=ColombiaTravel;User Id=Anderson\\sa;Password=123456;Trust Server Certificate=True;Trusted_Connection=True;")
          .Options;
