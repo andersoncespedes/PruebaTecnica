@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tLXLs0d80DdI5DkwWsCmutMqPIHyG+Rr8ISyQ+eqbEuWfIPlgD6sohocrS5iQeS6LTDYed0mMu7cOv/MfXdafw==",
+  "dgSpecHash": "c9z41+PaNPLm8FU0EuUtmMEKO8+OGiYAX9pjO7nMSdrmNUyHwDwa6I2Fb4u2pQdHDJjiu2AIr1bS/F/ixX6kBw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ander\\OneDrive\\Documentos\\Proyectos C#\\PruebaTecnicaDotNet\\API\\API.csproj",
+  "projectFilePath": "C:\\Users\\ander\\OneDrive\\Documentos\\Proyectos C#\\PruebaTecnicaDotNet\\api\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ander\\.nuget\\packages\\aspnetcoreratelimit\\5.0.0\\aspnetcoreratelimit.5.0.0.nupkg.sha512",
     "C:\\Users\\ander\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",

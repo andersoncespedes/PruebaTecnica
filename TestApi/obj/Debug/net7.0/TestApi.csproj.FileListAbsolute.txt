@@ -157,3 +157,5 @@ c:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\TestApi\obj\
 c:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\TestApi\obj\Debug\net7.0\TestApi.pdb
 c:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\TestApi\obj\Debug\net7.0\TestApi.genruntimeconfig.cache
 c:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\TestApi\obj\Debug\net7.0\ref\TestApi.dll
+C:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\TestApi\bin\Debug\net7.0\Castle.Core.dll
+C:\Users\ander\OneDrive\Documentos\Proyectos C#\PruebaTecnicaDotNet\TestApi\bin\Debug\net7.0\Moq.dll

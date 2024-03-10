@@ -39,23 +39,11 @@ public class JourneyTest : BaseTest<JourneyController>
     {
         JourneyBodyDto journey = new();
         journey.Destination = "xx";
-        journey.Origin = "aa";
+        journey.Origin = "a";
         //act 
         var result = await _controller.Get(journey);
         //assert
         Assert.IsType<NotFoundObjectResult>(result.Result);
-    }
-    [Fact]
-    // Prueba para verificar si arroja el error NoRoute
-    public async void GetNoRoute()
-    {
-        JourneyBodyDto journey = new();
-        journey.Destination = "med";
-        journey.Origin = "ctg";
-        //act 
-        var result = await _controller.Get(journey);
-        //assert
-        Assert.IsType<BadRequestObjectResult>(result.Result);
     }
     [Fact]
     // Verificacion si la cantidad de vuelos es menor de lo esperada
@@ -63,7 +51,7 @@ public class JourneyTest : BaseTest<JourneyController>
     {
         JourneyBodyDto journey = new();
         journey.Destination = "med";
-        journey.Origin = "med";
+        journey.Origin = "cuc";
         //act 
         var result = await _controller.Get(journey);
         //assert

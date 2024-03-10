@@ -58,7 +58,7 @@ public class APIGetter : IAPIGetter
         // Obtencion de los vuelos de parte de la api
         IEnumerable<FlightDto> flights = await GetOrSetCacheApi();
         //verificamos si existe en la api una destinacion o un origen con el nombre pasado por parametro
-        if (flights.Any(e => e.Destination != entity.Destination || e.Origin != entity.Origin))
+        if (!flights.Any(e => e.Destination == entity.Destination || e.Destination == e.Origin  ))
         {
             // Si no existe entonces arroja un error 
             throw new ArgumentNullException("No se encontro la ubicacion");

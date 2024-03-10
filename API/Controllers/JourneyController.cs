@@ -14,7 +14,7 @@ public class JourneyController : BaseApiController
     private readonly IAPIGetter _api;
     private readonly IMapper _mapper;
     private readonly ILogger<JourneyController> _logger;
-    public JourneyController(IUnitOfWork unitOfWork, IAPIGetter api, IMapper mapper, ILogger<JourneyController> logger)
+    public JourneyController(IUnitOfWork unitOfWork, IAPIGetter api, IMapper mapper, ILogger<JourneyController> logger )
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
