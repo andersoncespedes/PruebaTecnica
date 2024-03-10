@@ -91,3 +91,6 @@ Aquí tienes un ejemplo simple de una prueba unitaria en C# utilizando NUnit:
         Assert.IsAssignableFrom<JourneyDto>(result.Value);
     }
 ```
+## Autor
+- Anderson Cespedes
+
