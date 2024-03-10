@@ -1,11 +1,11 @@
 using API.Controllers;
 
 namespace TestApi;
-public class FlightTest : BaseTest
+public class FlightTest : BaseTest<FlightController>
 {
     private readonly FlightController _controller;
     public FlightTest(){
-        _controller = new FlightController(_service);
+        _controller = new FlightController(_service, _logger);
     }
     [Fact]
     // Prueba Para verifcar la llegada correcta de data

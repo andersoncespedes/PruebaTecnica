@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TestApi;
 
-public class JourneyTest : BaseTest
+public class JourneyTest : BaseTest<JourneyController> 
 {
     // Inicializacion del controlador de Journey
     private readonly JourneyController _controller;
@@ -14,7 +14,7 @@ public class JourneyTest : BaseTest
     public JourneyTest()
     {
         // Instanciacion del controlador de Journey
-        _controller = new JourneyController(_unitOfWork, _service, _mapper);
+        _controller = new JourneyController(_unitOfWork, _service, _mapper, _logger);
 
     }
     [Fact]
