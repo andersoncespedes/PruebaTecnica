@@ -58,6 +58,7 @@ public class JourneyController : BaseApiController
                 // Guardamos los cambios
                 await _unitOfWork.SaveChangesAsync();
                 // retornamos la respuesta pasada por el servicio
+                _logger.LogInformation("Resultados Guardados");
                 return journeydto;
             }
         }
