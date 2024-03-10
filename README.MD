@@ -34,7 +34,8 @@ La API estará disponible en https://localhost:5038
 ## Uso
 
 a continuacion se hara una lista de los endpoints, sus metodos y body:
-- ### Obtener una lista de los diferentes vuelos obtenidos por api.
+### Obtener una lista de los diferentes vuelos obtenidos por api.
+
 #### Metodo: GET
 #### Endpoint
 ```
@@ -44,7 +45,8 @@ http://localhost:5038/api/flight/
 ```
 null
 ```
-- ### Obtener una ruta para un viaje usando la api( Importante )
+***
+### Obtener una ruta para un viaje usando la api ( Importante )
 #### Metodo: GET
 #### Endpoint
 ```
