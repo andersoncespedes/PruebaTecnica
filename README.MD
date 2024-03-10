@@ -1,18 +1,18 @@
-# Viaje Por Colombia API
+# Viaje Por Colombia API &#x1F680;
 Esta API permite buscar una ruta perfecta para un viaje desde un destino a otro, utilizando una API externa. Además, guarda la información del viaje en la base de datos para consultas futuras.
-## Requisitos
+## Requisitos &#x1F4BB;
 - .NET 7 SDK
 - SQL Server Version 10.0.22631
-## Dependencias
+## Dependencias &#x1F4E6;
 - Microsoft.EntityFrameworkCore Version 7.0.16
 - Microsoft.AspNetCore.Mvc.NewtonsoftJson Version 7.0.16
 - Microsoft.EntityFrameworkCore.Design Version 7.0.16
 - AutoMapper
 - AspNetCoreRateLimit
-## Configuración
+## Configuración &#x1F527;
 - Clonar el repositorio: git clone https://github.com/andersoncespedes/PruebaTecnica.git
 - Abrir el proyecto en Visual Studio o mediante la línea de comandos
-## Configuración de la Base de Datos
+## Configuración de la Base de Datos &#x1F4BB; &#x1F527;
 - Crear una base de datos en SQL Server.
 - Actualizar la cadena de conexión en appsettings.json con los detalles de la base de datos creada
 ```
@@ -24,7 +24,7 @@ Esta API permite buscar una ruta perfecta para un viaje desde un destino a otro,
 ```
 dotnet ef database update
 ```
-## Ejecución
+## Ejecución &#x1F4DD;
 - Compilar el proyecto
 - Ejecutar el proyecto desde Visual Studio o mediante la línea de comandos
 ```
@@ -57,7 +57,7 @@ http://localhost:5038/api/Journey/
   "Destination":"Ultimo destino del viaje"
 }
 ```
-## Pruebas Unitarias
+## Pruebas Unitarias &#x1F4CB;
 Las pruebas unitarias son fundamentales en nuestro proyecto para garantizar la calidad del código y la estabilidad de las funcionalidades. Utilizamos XUnit como framework de pruebas unitarias.
 
 ### Ejecución de las Pruebas
