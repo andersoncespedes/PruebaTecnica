@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ander\\OneDrive\\Documentos\\Proyectos C#\\PruebaTecnicaDotNet\\api\\API.csproj": {}
+    "C:\\Users\\ander\\OneDrive\\Documentos\\Proyectos C#\\PruebaTecnicaDotNet\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ander\\OneDrive\\Documentos\\Proyectos C#\\PruebaTecnicaDotNet\\api\\API.csproj": {
+    "C:\\Users\\ander\\OneDrive\\Documentos\\Proyectos C#\\PruebaTecnicaDotNet\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ander\\OneDrive\\Documentos\\Proyectos C#\\PruebaTecnicaDotNet\\api\\API.csproj",
+        "projectUniqueName": "C:\\Users\\ander\\OneDrive\\Documentos\\Proyectos C#\\PruebaTecnicaDotNet\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\ander\\OneDrive\\Documentos\\Proyectos C#\\PruebaTecnicaDotNet\\api\\API.csproj",
+        "projectPath": "C:\\Users\\ander\\OneDrive\\Documentos\\Proyectos C#\\PruebaTecnicaDotNet\\API\\API.csproj",
         "packagesPath": "C:\\Users\\ander\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ander\\OneDrive\\Documentos\\Proyectos C#\\PruebaTecnicaDotNet\\api\\obj\\",
+        "outputPath": "C:\\Users\\ander\\OneDrive\\Documentos\\Proyectos C#\\PruebaTecnicaDotNet\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ander\\AppData\\Roaming\\NuGet\\NuGet.Config"

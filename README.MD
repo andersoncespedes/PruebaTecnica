@@ -22,7 +22,7 @@ Esta API permite buscar una ruta perfecta para un viaje desde un destino a otro,
 ```
 - Ejecutar las migraciones de Entity Framework para crear las tablas necesarias en la base de datos
 ```
-dotnet ef database update
+dotnet ef database update -p ./DataAccess -s ./API
 ```
 ## Ejecución &#x1F4DD;
 - Compilar el proyecto
